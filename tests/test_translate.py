@@ -1,6 +1,9 @@
+import os
+from dotenv import load_dotenv
 from sarvamai import SarvamAI
 
-client = SarvamAI(api_subscription_key="sk_rzec3iex_zRSsasnS42mibrgTuDxpILty")
+load_dotenv()
+client = SarvamAI(api_subscription_key=os.getenv("SARVAM_API_KEY"))
 
 # Same message but in proper Devanagari script
 sms = "प्रिय ग्राहक, आपका KYC समाप्त हो गया है। तुरंत अपडेट करने के लिए इस लिंक पर क्लिक करें: bit.ly/upd8kyc"
