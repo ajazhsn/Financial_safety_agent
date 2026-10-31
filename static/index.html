@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#3D6BF0">
+  <title>Financial Safety Agent</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;700;800&family=Noto+Sans+Tamil:wght@400;700&family=Noto+Sans+Telugu:wght@400;700&family=Noto+Sans+Kannada:wght@400;700&family=Noto+Sans+Malayalam:wght@400;700&family=Noto+Sans+Bengali:wght@400;700&family=Noto+Sans+Gurmukhi:wght@400;700&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+  <script>try { if (localStorage.getItem("fsa-theme") === "dark") document.documentElement.dataset.theme = "dark"; } catch (e) {}</script>
+</head>
+<body>
+  <header class="bar">
+    <div class="brand">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 2.5l11 4v8.2c0 7.3-4.7 12.6-11 14.8C9.7 27.3 5 22 5 14.7V6.5z" fill="currentColor"/><path d="M10.5 16l4 4 7-8" fill="none" stroke="var(--on-primary)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span data-i18n="app_name"></span>
+    </div>
+    <div class="bar-right">
+    <button type="button" class="theme-switch" id="theme-switch" aria-label="Dark mode">
+      <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+      <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <button type="button" class="lang-switch" id="lang-switch">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 12h18M12 3c2.6 2.6 3.8 5.6 3.8 9s-1.2 6.4-3.8 9c-2.6-2.6-3.8-5.6-3.8-9S9.4 5.6 12 3z" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+      <span id="lang-current"></span>
+    </button>
+    </div>
+  </header>
+
+  <a class="helpline" href="tel:1930">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>
+    <span data-i18n="helpline"></span>
+  </a>
+
+  <main class="stage" id="stage">
+
+    <!-- language -->
+    <section class="screen" data-screen="lang" hidden>
+      <h1 class="q" data-i18n="lang_title"></h1>
+      <div class="lang-grid" id="languages"></div>
+    </section>
+
+    <!-- step 1: how -->
+    <section class="screen" data-screen="how" hidden>
+      <p class="step" data-step="1"></p>
+      <h1 class="q" data-i18n="how_title"></h1>
+      <div class="tiles">
+        <button type="button" class="tile" data-mode="text">
+          <span class="tile-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 10h32v22H18l-10 8z" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linejoin="round"/><path d="M15 18h18M15 24h11" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/></svg></span>
+          <span data-i18n="m_text"></span>
+        </button>
+        <button type="button" class="tile" data-mode="image">
+          <span class="tile-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M6 15a3 3 0 0 1 3-3h6l3-4h12l3 4h6a3 3 0 0 1 3 3v20a3 3 0 0 1-3 3H9a3 3 0 0 1-3-3z" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linejoin="round"/><circle cx="24" cy="25" r="7" fill="none" stroke="currentColor" stroke-width="3.2"/></svg></span>
+          <span data-i18n="m_image"></span>
+        </button>
+        <button type="button" class="tile" data-mode="voice">
+          <span class="tile-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="18" y="6" width="12" height="22" rx="6" fill="none" stroke="currentColor" stroke-width="3.2"/><path d="M11 22a13 13 0 0 0 26 0M24 35v7" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/></svg></span>
+          <span data-i18n="m_voice"></span>
+        </button>
+      </div>
+      <div class="examples">
+        <p data-i18n="examples"></p>
+        <div id="examples"></div>
+      </div>
+    </section>
+
+    <!-- step 2: input -->
+    <section class="screen" data-screen="input" hidden>
+      <p class="step" data-step="2"></p>
+      <h1 class="q" id="input-title"></h1>
+
+      <div class="input" data-input="text">
+        <textarea id="text" rows="6" data-i18n-ph="placeholder"></textarea>
+      </div>
+
+      <div class="input" data-input="image">
+        <label class="drop" id="drop">
+          <input type="file" id="image" accept="image/*" hidden>
+          <img id="preview" alt="" hidden>
+          <span class="drop-hint" id="drop-hint">
+            <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 32V10M15 19l9-9 9 9M8 32v6a2 2 0 0 0 2 2h28a2 2 0 0 0 2-2v-6" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span id="drop-text" data-i18n="drop_image"></span>
+          </span>
+        </label>
+      </div>
+
+      <div class="input voice-input" data-input="voice">
+        <button type="button" class="mic" id="mic" aria-pressed="false">
+          <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="18" y="6" width="12" height="22" rx="6"/><path d="M11 22a13 13 0 0 0 26 0M24 35v7" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round"/></svg>
+        </button>
+        <p class="mic-status" id="mic-status" aria-live="polite"></p>
+        <label class="upload-audio"><span data-i18n="upload_audio"></span><input type="file" id="audio-file" accept="audio/*"></label>
+      </div>
+
+      <p class="form-error" id="form-error" role="alert" hidden></p>
+      <div class="nav">
+        <button type="button" class="ghost" data-back><span data-i18n="back"></span></button>
+        <button type="button" class="primary" id="to-acted"><span data-i18n="next"></span></button>
+      </div>
+    </section>
+
+    <!-- step 3: already acted? -->
+    <section class="screen" data-screen="acted" hidden>
+      <p class="step" data-step="3"></p>
+      <h1 class="q" data-i18n="acted_title"></h1>
+      <div class="yesno">
+        <button type="button" class="answer yes" data-acted="true">
+          <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 5l20 36H4z" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linejoin="round"/><path d="M24 19v10M24 34.5v.5" stroke="currentColor" stroke-width="3.6" stroke-linecap="round"/></svg>
+          <span data-i18n="yes"></span>
+        </button>
+        <button type="button" class="answer no" data-acted="false">
+          <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="19" fill="none" stroke="currentColor" stroke-width="3.4"/><path d="M15 24.5l6.5 6.5L33 18.5" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span data-i18n="no"></span>
+        </button>
+      </div>
+      <div class="nav"><button type="button" class="ghost" data-back><span data-i18n="back"></span></button></div>
+    </section>
+
+    <!-- waiting -->
+    <section class="screen" data-screen="wait" hidden>
+      <div class="radar" aria-hidden="true"><span></span><span></span><svg viewBox="0 0 32 32"><path d="M16 2.5l11 4v8.2c0 7.3-4.7 12.6-11 14.8C9.7 27.3 5 22 5 14.7V6.5z" fill="currentColor"/></svg></div>
+      <h1 class="q center" data-i18n="wait_title"></h1>
+      <ol class="progress" id="progress" aria-live="polite">
+        <li data-stage="reading"><span class="dot"></span><span data-i18n="stage_reading"></span></li>
+        <li data-stage="investigating"><span class="dot"></span><span data-i18n="stage_investigating"></span></li>
+        <li data-stage="writing"><span class="dot"></span><span data-i18n="stage_writing"></span></li>
+        <li data-stage="voice"><span class="dot"></span><span data-i18n="stage_voice"></span></li>
+      </ol>
+    </section>
+
+    <!-- result -->
+    <section class="screen" data-screen="result" hidden>
+      <div class="verdict" id="verdict">
+        <div class="verdict-icon" aria-hidden="true">
+          <svg class="v-fraud" viewBox="0 0 48 48"><path d="M24 4l21 38H3z"/><path d="M24 18v11M24 35v.5" stroke="var(--verdict-bg)" stroke-width="4" stroke-linecap="round"/></svg>
+          <svg class="v-genuine" viewBox="0 0 48 48"><circle cx="24" cy="24" r="21"/><path d="M14 24.5l7 7L34 18" fill="none" stroke="var(--verdict-bg)" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg class="v-unsure" viewBox="0 0 48 48"><circle cx="24" cy="24" r="21"/><path d="M18.5 18.5a5.5 5.5 0 1 1 7.8 5c-1.5.8-2.3 1.8-2.3 3.5v1M24 35v.5" fill="none" stroke="var(--verdict-bg)" stroke-width="4" stroke-linecap="round"/></svg>
+        </div>
+        <p class="verdict-word" id="stamp-word"></p>
+        <h1 class="verdict-line" id="headline"></h1>
+      </div>
+
+      <button type="button" class="listen" id="play">
+        <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>
+        <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg>
+        <span class="listen-label" id="listen-label"></span>
+        <span class="listen-bar"><span id="bar-fill"></span></span>
+      </button>
+      <audio id="audio" preload="auto"></audio>
+      <p class="no-voice" id="no-voice" data-i18n="no_voice" hidden></p>
+
+      <p class="explain" id="explanation"></p>
+      <p class="privacy" id="privacy" hidden>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 11V8a5 5 0 0 1 10 0v3M5 11h14v10H5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+        <span><span data-i18n="privacy_hidden"></span> <b id="privacy-items"></b></span>
+      </p>
+
+      <div class="todo">
+        <h2 data-i18n="steps_title"></h2>
+        <ol id="steps"></ol>
+      </div>
+
+      <div class="rules" id="rules-block" hidden>
+        <h3 data-i18n="rules_title"></h3>
+        <ul id="rules"></ul>
+      </div>
+
+      <button type="button" class="primary wide" id="again"><span data-i18n="check_another"></span></button>
+
+      <details class="more">
+        <summary data-i18n="how_decided"></summary>
+        <ol class="timeline" id="timeline"></ol>
+        <h4 data-i18n="tools_used"></h4>
+        <div class="chips" id="tools"></div>
+        <h4 data-i18n="evidence"></h4>
+        <ul class="evidence" id="evidence"></ul>
+        <p class="timing" id="timing"></p>
+      </details>
+      <details class="more">
+        <summary data-i18n="what_read"></summary>
+        <p class="read" id="read"></p>
+      </details>
+      <details class="more">
+        <summary data-i18n="english_answer"></summary>
+        <div id="english" class="english"></div>
+      </details>
+    </section>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

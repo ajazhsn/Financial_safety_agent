@@ -1,0 +1,30 @@
+{
+  "model": "anthropic/claude-haiku-4.5",
+  "judge": null,
+  "split": "real",
+  "n": 44,
+  "table": {
+    "baseline": {
+      "accuracy": 0.9318181818181818,
+      "precision": 1.0,
+      "recall": 0.9142857142857143,
+      "false_alarms": 0,
+      "missed_frauds": 3,
+      "unclear": 6,
+      "errors": 0,
+      "avg_calls": 1.0,
+      "avg_tokens": 874.0909090909091
+    },
+    "full": {
+      "accuracy": 0.9772727272727273,
+      "precision": 1.0,
+      "recall": 0.9714285714285714,
+      "false_alarms": 0,
+      "missed_frauds": 1,
+      "unclear": 6,
+      "errors": 0,
+      "avg_calls": 5.431818181818182,
+      "avg_tokens": 10410.295454545454
+    }
+  }
+}

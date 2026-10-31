@@ -1,0 +1,12 @@
+# Tested with Python 3.12. Also needs ffmpeg on PATH (audio conversion).
+fastapi
+uvicorn
+python-multipart
+openai
+requests
+python-dotenv
+pydub
+sentence-transformers
+chromadb
+pandas
+pytest
