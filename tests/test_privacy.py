@@ -55,3 +55,7 @@ def test_generic_greetings_and_brands_not_masked_as_names():
     assert mask_pii("Dear ManuVashishth, click here")[0] == "Dear [name hidden], click here"
     assert mask_pii("Dear Ravi Your account is blocked")[0] == "Dear [name hidden] Your account is blocked"
     assert "name" not in types("Dear Consumer Your power will be disconnected")
+
+
+def test_otp_before_the_word_otp():
+    assert mask_pii("482913 is the OTP for your transaction of Rs 2,499.00")[0].startswith("[OTP hidden] is the OTP")

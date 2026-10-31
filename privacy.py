@@ -27,7 +27,7 @@ OTP_WORDS = (r"otp|one[\s-]?time[\s-]?password|verification\s+code|security\s+co
 # a 4-8 digit group that is not part of a longer number ("1800 1234" is a helpline, not an OTP)
 OTP_DIGITS = r"(?<![\d.,])(?<!\d\s)(\d{4,8})(?![\d.,]*\d)(?!\s\d)"
 OTP_AFTER_RE = re.compile(rf"(?:{OTP_WORDS})[^\d\n]{{0,40}}?{OTP_DIGITS}", re.I)
-OTP_BEFORE_RE = re.compile(rf"{OTP_DIGITS}\s+(?:is|is\s+your|as\s+your|है|आपका)\s+(?:your\s+)?(?:{OTP_WORDS})",
+OTP_BEFORE_RE = re.compile(rf"{OTP_DIGITS}\s+(?:is|is\s+your|as\s+your|है|आपका)\s+(?:your\s+|the\s+)?(?:{OTP_WORDS})",
                            re.I)
 CVV_RE = re.compile(r"cvv2?\b[^\d\n]{0,15}(\d{3,4})(?!\d)", re.I)
 AADHAAR_RE = re.compile(r"(?<![\d])[2-9]\d{3}[\s-]?\d{4}[\s-]?\d{4}(?![\d])")

@@ -79,6 +79,8 @@ def timeline(out):
             steps.append({"kind": "reinvestigate", "note": "failed; kept the first verdict"})
         elif name == "incident_plan":
             steps.append({"kind": "incident"})
+        elif name == "guard":  # the deterministic contact guard rewrote unsafe advice
+            steps.append({"kind": "guard", "note": "; ".join(str(x)[:80] for x in s.get("removed", []))[:240]})
     tools = [{"tool": t["tool"], "args": json.dumps(t["args"], ensure_ascii=False)[:140]} for t in out["trace"]]
     evidence = [{"claim": e.get("claim", ""), "source": e.get("source", "")}
                 for e in out["verdict"].get("evidence", [])]

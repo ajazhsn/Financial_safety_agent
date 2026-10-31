@@ -166,6 +166,10 @@ knowledge base automatically. Each check costs about $0.003 (fast path) to $0.01
 
 Tests (no API calls): `python -m pytest tests -q`
 
+**Try it:** the `examples/` folder has three phone screenshots (a KYC-link scam, an electricity cut-off scam and a
+genuine bank OTP alert) to drop into the "Screenshot" option, and the start page has example messages in English
+and Hindi.
+
 ## Reproduce the experiments
 
 | What | Command | Cost |
@@ -196,6 +200,7 @@ eval_set.jsonl      development set (104)           heldout_set.jsonl    test se
 injection_set.jsonl, injection_set_v2.jsonl   attack sets
 results/            every run's per-message output and the reports
 tests/              unit tests (privacy mask, report maths, cascade routing)
+examples/           sample screenshots for trying the OCR input
 ```
 
 ## Data and credits
