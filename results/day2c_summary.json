@@ -1,0 +1,22 @@
+{
+  "model": "anthropic/claude-haiku-4.5",
+  "judge": null,
+  "split": "all",
+  "n": 104,
+  "privacy": true,
+  "table": {
+    "full_raw": {
+      "accuracy": 0.9423076923076923,
+      "precision": 0.9552238805970149,
+      "recall": 0.9552238805970149,
+      "false_alarms": 3,
+      "missed_frauds": 3,
+      "unclear": 2,
+      "unclear_genuine": 2,
+      "genuine_ok": 0.8648648648648649,
+      "errors": 0,
+      "avg_calls": 4.865384615384615,
+      "avg_tokens": 9243.961538461539
+    }
+  }
+}
